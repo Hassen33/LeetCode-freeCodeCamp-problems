@@ -1,0 +1,36 @@
+function biSymDiff(a,b) {
+  let result = [];
+  // delete duplicated item inside each array
+  a= [...new Set(a)];
+  b= [...new Set(b)];
+  // collapse the two arrays into 'startArr'
+  let startArr = [...a, ...b];
+  console.log(startArr);
+
+  // find occurance of each iteme
+  for(let i=0; i<startArr.length; i++) {
+  let occ=0;
+  for(let j=0; j<startArr.length; j++) {
+      startArr[i]==startArr[j] && occ++;
+  }
+  // push the non-duplicated item to the 'result' array
+  occ<2 && result.push(startArr[i]);
+}
+  result.sort();
+   console.log(result);
+  return result;
+}
+
+
+// run the biSymDiff on each two items
+function sym(...args){
+   console.log([...args]);
+   let finalResult = [];
+   let inputs = [...args]
+  for(let i=0; i<inputs.length; i++) {
+      finalResult = biSymDiff(finalResult,inputs[i]);
+  
+}
+return finalResult;
+}
+sym([1, 2, 3], [5, 2, 1, 4]);
